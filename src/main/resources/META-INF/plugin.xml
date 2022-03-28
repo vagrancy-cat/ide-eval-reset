@@ -1,0 +1,34 @@
+<idea-plugin>
+    <id>com.yunliu.research.ide-eval-reset</id>
+    <name>IDE Reset</name>
+    <vendor>yunliu</vendor>
+
+    <description><![CDATA[
+    I can reset your IDE eval information.<br><br><br>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <actions>
+        <action class="com.yunliu.research.intellij.action.ResetAction"
+                id="com.yunliu.research.intellij.action.ResetAction">
+            <add-to-group group-id="HelpMenu" anchor="last"/>
+            <add-to-group group-id="WelcomeScreen.Documentation" anchor="last"/>
+        </action>
+        <action class="com.yunliu.research.intellij.action.RestartAction"
+                id="com.yunliu.research.intellij.action.RestartAction"/>
+    </actions>
+
+    <applicationListeners>
+        <listener class="com.yunliu.research.intellij.listener.PluginListener"
+                  topic="com.intellij.ide.plugins.DynamicPluginListener"/>
+    </applicationListeners>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <errorHandler implementation="com.yunliu.research.intellij.helper.ErrorReporter"/>
+        <preloadingActivity implementation="com.yunliu.research.intellij.listener.AppInitActivity"/>
+        <notificationGroup id="com.yunliu.research.ide-eval-reset" displayType="BALLOON" icon="AllIcons.General.Reset"/>
+        <toolWindow id="ide eval reset" secondary="true" icon="AllIcons.General.Reset" anchor="bottom"
+                    factoryClass="com.yunliu.research.intellij.tw.MainToolWindowFactory"/>
+    </extensions>
+</idea-plugin>
