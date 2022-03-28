@@ -1,4 +1,5 @@
 # Reset Your IDE Eval Information
+# Plagiaristic version
 
 1. Download and install plugin.
     * Alternative installation method:
